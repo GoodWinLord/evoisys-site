@@ -43,7 +43,7 @@ h1 .glow{background:linear-gradient(120deg,var(--cy),var(--cy2));-webkit-backgro
 .visual{position:relative;border-radius:28px;overflow:hidden;min-height:380px;
  background:linear-gradient(160deg,#0d1b2a,#13315c 60%,#1b4b8f);box-shadow:0 30px 60px rgba(13,27,42,.35)}
 .visual svg{position:absolute;inset:0;width:100%;height:100%}
-.visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
 .flow{stroke:var(--cy2);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-dasharray:10 14;animation:flow 2.4s linear infinite;filter:drop-shadow(0 0 6px rgba(41,182,246,.9))}
 .flow.warm{stroke:var(--am);filter:drop-shadow(0 0 6px rgba(255,143,0,.8))}
 @keyframes flow{to{stroke-dashoffset:-48}}
@@ -65,7 +65,7 @@ h2{font-size:clamp(24px,3vw,34px);letter-spacing:-.5px;margin-bottom:8px}
 .work{border-radius:var(--r);min-height:220px;position:relative;overflow:hidden;display:flex;align-items:flex-end;
  background:linear-gradient(160deg,#22364a,#0d1b2a);border:1px dashed rgba(41,182,246,.5)}
 .work span{padding:16px;font-size:13px;color:#cfe3f5}
-.work img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.work img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%}
 .work span{position:relative;background:linear-gradient(transparent,rgba(13,27,42,.75));display:block;border-radius:0 0 var(--r) var(--r)}
 /* steps */
 .steps{counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
