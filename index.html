@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Монтаж вентиляции и кондиционирования в СПб — Evoisys</title>
+<meta name="description" content="Проектирование и монтаж систем вентиляции и кондиционирования в Санкт-Петербурге. Договор, гарантия, смета за 24 часа.">
+<meta property="og:title" content="Evoisys — вентиляция и кондиционирование в СПб">
+<meta property="og:description" content="Проект, монтаж, пусконаладка. Смета за 24 часа.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://evoisys.ru/">
+<style>
+:root{
+  --ink:#1c2733;--mut:#5a6b7a;--bg:#eef3f7;--card:rgba(255,255,255,.62);
+  --cy:#1565c0;--cy2:#29b6f6;--am:#ff8f00;--r:20px;
+  --sh:0 10px 30px rgba(21,60,120,.10);
+}
+*{margin:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font:16px/1.65 "Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:
+ radial-gradient(1200px 500px at 80% -10%, rgba(41,182,246,.16), transparent 60%),
+ radial-gradient(900px 420px at 10% 110%, rgba(255,143,0,.10), transparent 60%), var(--bg)}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+header{position:sticky;top:0;z-index:10;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+ background:rgba(255,255,255,.55);border-bottom:1px solid rgba(21,60,120,.08)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+.logo{font-size:24px;font-weight:900;letter-spacing:.2px;text-decoration:none;color:var(--ink)}
+.logo .e{color:var(--cy)}.logo .i{color:var(--am)}.logo .s{color:var(--ink)}
+.nav a.lnk{color:var(--mut);text-decoration:none;margin-left:22px;font-weight:600}
+.nav a.lnk:hover{color:var(--cy)}
+.btn{display:inline-block;background:linear-gradient(135deg,var(--cy),var(--cy2));color:#fff;text-decoration:none;
+ font-weight:700;padding:14px 30px;border-radius:16px;box-shadow:0 8px 22px rgba(21,101,192,.35);border:0;cursor:pointer;font-size:16px;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:rgba(255,255,255,.6);color:var(--cy);box-shadow:none;border:1px solid rgba(21,101,192,.25)}
+/* hero */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:72px 0 56px}
+h1{font-size:clamp(30px,4.6vw,50px);line-height:1.12;letter-spacing:-1px}
+h1 .glow{background:linear-gradient(120deg,var(--cy),var(--cy2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--mut);font-size:18px;margin:20px 0 30px;max-width:520px}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.chip{background:var(--card);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(21,60,120,.10);
+ border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600;box-shadow:var(--sh)}
+.visual{position:relative;border-radius:28px;overflow:hidden;min-height:380px;
+ background:linear-gradient(160deg,#0d1b2a,#13315c 60%,#1b4b8f);box-shadow:0 30px 60px rgba(13,27,42,.35)}
+.visual svg{position:absolute;inset:0;width:100%;height:100%}
+.flow{stroke:var(--cy2);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-dasharray:10 14;animation:flow 2.4s linear infinite;filter:drop-shadow(0 0 6px rgba(41,182,246,.9))}
+.flow.warm{stroke:var(--am);filter:drop-shadow(0 0 6px rgba(255,143,0,.8))}
+@keyframes flow{to{stroke-dashoffset:-48}}
+.ph{position:absolute;inset:auto 0 0 0;padding:14px 18px;font-size:13px;color:#cfe3f5;background:linear-gradient(transparent,rgba(13,27,42,.85))}
+@media (prefers-reduced-motion:reduce){.flow{animation:none}}
+/* sections */
+section{padding:64px 0}
+h2{font-size:clamp(24px,3vw,34px);letter-spacing:-.5px;margin-bottom:8px}
+.sub2{color:var(--mut);margin-bottom:36px;max-width:640px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:var(--card);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+ border:1px solid rgba(21,60,120,.10);border-radius:var(--r);padding:28px;box-shadow:var(--sh)}
+.card h3{font-size:20px;margin:14px 0 8px}
+.card p{color:var(--mut);font-size:15px}
+.ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:24px;
+ background:linear-gradient(135deg,rgba(41,182,246,.18),rgba(21,101,192,.18));border:1px solid rgba(21,101,192,.15)}
+/* portfolio */
+.works{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.work{border-radius:var(--r);min-height:220px;position:relative;overflow:hidden;display:flex;align-items:flex-end;
+ background:linear-gradient(160deg,#22364a,#0d1b2a);border:1px dashed rgba(41,182,246,.5)}
+.work span{padding:16px;font-size:13px;color:#cfe3f5}
+/* steps */
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.step{background:rgba(255,255,255,.5);border:1px solid rgba(21,60,120,.08);border-radius:var(--r);padding:22px;position:relative}
+.step::before{counter-increment:s;content:counter(s);display:block;font-size:30px;font-weight:900;color:var(--cy2);margin-bottom:8px}
+.step b{display:block;margin-bottom:6px}
+.step p{color:var(--mut);font-size:14px}
+/* form */
+form{display:grid;gap:14px;max-width:520px}
+input,textarea{font:inherit;padding:14px 16px;border-radius:14px;border:1px solid rgba(21,60,120,.20);background:rgba(255,255,255,.8);width:100%}
+input:focus,textarea:focus{outline:2px solid var(--cy2)}
+.note{font-size:13px;color:var(--mut)}
+footer{border-top:1px solid rgba(21,60,120,.08);padding:32px 0;color:var(--mut);font-size:14px}
+@media(max-width:900px){
+ .hero{grid-template-columns:1fr;padding:48px 0}
+ .grid3,.works{grid-template-columns:1fr 1fr}
+ .steps{grid-template-columns:1fr 1fr}
+ .nav a.lnk{display:none}
+}
+@media(max-width:600px){.grid3,.works,.steps{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+<a class="logo" href="#"><span class="e">Evo</span><span class="i">i</span><span class="s">Sys</span></a>
+<nav>
+<a class="lnk" href="#services">Услуги</a><a class="lnk" href="#works">Объекты</a><a class="lnk" href="#steps">Этапы</a>
+<a class="btn" href="tel:+79990000000" style="padding:10px 20px">Вызвать инженера</a>
+</nav>
+</div></header>
+
+<div class="wrap">
+<section class="hero">
+<div>
+<h1>Вентиляция и кондиционирование <span class="glow">в Санкт-Петербурге</span> — проект и монтаж под ключ</h1>
+<p class="lead">Считаем аэродинамику, монтируем чисто, сдаём с паспортами оборудования. Договор, гарантия, смета за 24 часа после выезда.</p>
+<a class="btn" href="tel:+79990000000">Вызвать инженера</a>
+<a class="btn ghost" href="#form">Оставить заявку</a>
+<div class="chips">
+<span class="chip">Договор и гарантия</span><span class="chip">Смета за 24 ч</span><span class="chip">Пусконаладка</span><span class="chip">Сервис</span>
+</div>
+</div>
+<div class="visual">
+<svg viewBox="0 0 500 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<path class="flow" d="M-20 90 C120 60 180 160 300 130 S 460 90 540 120"/>
+<path class="flow warm" d="M-20 210 C100 190 220 260 340 230 S 480 200 540 230"/>
+<path class="flow" d="M-20 320 C140 300 200 380 330 350 S 470 320 540 350"/>
+<circle cx="420" cy="70" r="34" fill="rgba(41,182,246,.12)" stroke="rgba(41,182,246,.5)"/>
+<circle cx="90" cy="350" r="26" fill="rgba(255,143,0,.10)" stroke="rgba(255,143,0,.45)"/>
+</svg>
+<div class="ph">Место для фото реального объекта: магистрали воздуховодов / наружный блок</div>
+</div>
+</section>
+
+<section id="services">
+<h2>Услуги</h2>
+<p class="sub2">Три направления — один подрядчик. Не нужно координировать проектировщика и монтажников отдельно.</p>
+<div class="grid3">
+<div class="card"><div class="ico">〰️</div><h3>Вентиляция</h3><p>Приточные и вытяжные системы для квартир, офисов, кафе и производств. Бесшумная работа, расчёт по нормам воздухообмена.</p></div>
+<div class="card"><div class="ico">❄️</div><h3>Кондиционирование</h3><p>Сплит-системы, мульти-сплит, VRF/VRV. Подбор по теплопритокам, скрытый монтаж магистралей, дренаж.</p></div>
+<div class="card"><div class="ico">📐</div><h3>Проектирование</h3><p>Аэродинамический и тепловой расчёт, спецификация оборудования, рабочая документация для согласования.</p></div>
+</div>
+</section>
+
+<section id="works">
+<h2>Выполненные объекты</h2>
+<p class="sub2">Сюда встают реальные фото. Сейчас — заглушки: ничужные фото не выдаём за свои.</p>
+<div class="works">
+<div class="work"><span>Фото объекта №1 · вентиляция офиса [заглушка]</span></div>
+<div class="work"><span>Фото объекта №2 · сплит-система квартиры [заглушка]</span></div>
+<div class="work"><span>Фото объекта №3 · магистрали коттеджа [заглушка]</span></div>
+</div>
+</section>
+
+<section id="steps">
+<h2>Как работаем</h2>
+<p class="sub2">От заявки до сдачи — по чек-листу, без сюрпризов в смете.</p>
+<div class="steps">
+<div class="step"><b>Заявка и выезд</b><p>Инженер приезжает, замеряет, слушает задачу.</p></div>
+<div class="step"><b>Смета за 24 ч</b><p>Прозрачная спецификация: оборудование + работы.</p></div>
+<div class="step"><b>Монтаж</b><p>По проекту, чисто, с фотоотчётом скрытых этапов.</p></div>
+<div class="step"><b>Пусконаладка</b><p>Проверка расходов, балансировка, гарантия.</p></div>
+</div>
+</section>
+
+<section id="form">
+<h2>Оставить заявку</h2>
+<p class="sub2">Перезвоним в рабочее время. Или сразу: <a href="tel:+79990000000" style="color:var(--cy);font-weight:700">+7 (999) 000-00-00</a> [заглушка] · Telegram @evoisys [заглушка]</p>
+<form onsubmit="event.preventDefault();document.getElementById('ok').style.display='block';this.reset();">
+<input required name="name" placeholder="Ваше имя" autocomplete="name">
+<input required name="phone" type="tel" placeholder="Телефон" autocomplete="tel">
+<textarea name="msg" rows="3" placeholder="Что нужно: вентиляция / кондиционирование / проект"></textarea>
+<button class="btn" type="submit">Отправить заявку</button>
+<p class="note" id="ok" style="display:none;color:var(--cy);font-weight:700">Заявка принята (демо-режим: подключить Telegram-бота перед запуском).</p>
+<p class="note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.</p>
+</form>
+</section>
+</div>
+
+<footer><div class="wrap">Evoisys · вентиляция и кондиционирование · Санкт-Петербург · evoisys.ru</div></footer>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HVACBusiness","name":"Evoisys","url":"https://evoisys.ru/","telephone":"+79990000000","areaServed":{"@type":"City","name":"Санкт-Петербург"}}
+</script>
+</body>
+</html>
