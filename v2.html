@@ -148,14 +148,56 @@ footer{border-top:1px solid rgba(21,60,120,.08);padding:32px 0;color:var(--mut);
 <section id="form">
 <h2>Оставить заявку</h2>
 <p class="sub2">Перезвоним в рабочее время. Или сразу: <a href="tel:+79213559846" style="color:var(--cy);font-weight:700">+7 921 355-98-46</a></p>
-<form onsubmit="event.preventDefault();document.getElementById('ok').style.display='block';this.reset();">
-<input required name="name" placeholder="Ваше имя" autocomplete="name">
-<input required name="phone" type="tel" placeholder="Телефон" autocomplete="tel">
-<textarea name="msg" rows="3" placeholder="Что нужно: вентиляция / кондиционирование / проект"></textarea>
-<button class="btn" type="submit">Отправить заявку</button>
-<p class="note" id="ok" style="display:none;color:var(--cy);font-weight:700">Заявка принята (демо-режим: подключить Telegram-бота перед запуском).</p>
+<form id="leadform" novalidate>
+<input required name="name" id="lf-name" placeholder="Ваше имя" autocomplete="name" maxlength="80">
+<input required name="phone" id="lf-phone" type="tel" inputmode="tel" placeholder="Телефон" autocomplete="tel" maxlength="25">
+<textarea name="msg" id="lf-msg" rows="3" maxlength="2000" placeholder="Что нужно: вентиляция / кондиционирование / проект"></textarea>
+<input name="honey" id="lf-honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+<button class="btn" type="submit" id="lf-btn">Отправить заявку</button>
+<p class="note" id="ok" style="display:none;color:var(--cy);font-weight:700">Заявка принята — перезвоним в рабочее время.</p>
+<p class="note" id="err" style="display:none;color:#e04b4b;font-weight:700">Не удалось отправить. Позвоните: +7 921 355-98-46</p>
 <p class="note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.</p>
 </form>
+<script>
+(function () {
+  var f = document.getElementById('leadform');
+  if (!f) return;
+  var btn = document.getElementById('lf-btn'),
+      okBox = document.getElementById('ok'),
+      errBox = document.getElementById('err'),
+      honey = document.getElementById('lf-honey');
+  function show(el) { el.style.display = 'block'; }
+  function hide(el) { el.style.display = 'none'; }
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    hide(okBox); hide(errBox);
+    var name = (document.getElementById('lf-name').value || '').trim();
+    var phone = (document.getElementById('lf-phone').value || '').trim();
+    var msg = (document.getElementById('lf-msg').value || '').trim();
+    if (name.length < 2 || phone.replace(/[^0-9]/g, '').length < 10) {
+      errBox.textContent = 'Укажите имя и номер телефона';
+      show(errBox); return;
+    }
+    var label = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Отправляем…';
+    fetch('/api/lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, phone: phone, msg: msg,
+                             page: location.href, honey: honey ? honey.value : '' })
+    }).then(function (r) { return r.json().catch(function () { return { ok: r.ok }; }); })
+      .then(function (d) {
+        if (d && d.ok) { f.reset(); show(okBox); }
+        else { throw new Error((d && d.error) || 'fail'); }
+      })
+      .catch(function () {
+        errBox.textContent = 'Не удалось отправить. Позвоните: +7 921 355-98-46';
+        show(errBox);
+      })
+      .then(function () { btn.disabled = false; btn.textContent = label; });
+  });
+})();
+</script>
 </section>
 </div>
 
