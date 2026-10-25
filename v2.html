@@ -180,12 +180,18 @@ footer{border-top:1px solid rgba(21,60,120,.08);padding:32px 0;color:var(--mut);
     }
     var label = btn.textContent;
     btn.disabled = true; btn.textContent = 'Отправляем…';
-    fetch('/api/lead', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: name, phone: phone, msg: msg,
-                             page: location.href, honey: honey ? honey.value : '' })
-    }).then(function (r) { return r.json().catch(function () { return { ok: r.ok }; }); })
+    var body = JSON.stringify({ name: name, phone: phone, msg: msg,
+                                page: location.href, honey: honey ? honey.value : '' });
+    var targets = ['https://api.evoisys.ru/api/lead', '/api/lead'];
+    function send(i) {
+      if (i >= targets.length) return Promise.reject(new Error('no target'));
+      return fetch(targets[i], { method: 'POST',
+                                 headers: { 'Content-Type': 'application/json' },
+                                 body: body })
+        .then(function (r) { return r.json().catch(function () { return { ok: r.ok }; }); })
+        .catch(function (e) { return send(i + 1); });
+    }
+    send(0)
       .then(function (d) {
         if (d && d.ok) { f.reset(); show(okBox); }
         else { throw new Error((d && d.error) || 'fail'); }
