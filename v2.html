@@ -105,6 +105,9 @@ footer{border-top:1px solid rgba(21,60,120,.08);padding:32px 0;color:var(--mut);
 <p class="lead">Считаем аэродинамику, монтируем чисто, сдаём с паспортами оборудования. Договор, гарантия, смета за 24 часа после выезда.</p>
 <a class="btn" href="tel:+79213559846">Вызвать инженера</a>
 <a class="btn ghost" href="#form">Оставить заявку</a>
+<a class="btn ghost" href="https://t.me/+79213559846" target="_blank" rel="noopener">Telegram</a>
+<a class="btn ghost" href="https://wa.me/79213559846" target="_blank" rel="noopener">WhatsApp</a>
+<p class="note" id="callhint" style="display:none;color:var(--cy);font-weight:700">Позвонить: <a href="tel:+79213559846" style="color:var(--cy)">+7 921 355-98-46</a> или оставьте заявку — перезвоним.</p>
 <div class="chips">
 <span class="chip">Договор и гарантия</span><span class="chip">Смета за 24 ч</span><span class="chip">Пусконаладка</span><span class="chip">Сервис</span>
 </div>
@@ -211,6 +214,26 @@ footer{border-top:1px solid rgba(21,60,120,.08);padding:32px 0;color:var(--mut);
 <footer><div class="wrap">Evoisys · вентиляция и кондиционирование · Санкт-Петербург · evoisys.ru</div></footer>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"HVACBusiness","name":"Evoisys","url":"https://evoisys.ru/","telephone":"+79213559846","areaServed":{"@type":"City","name":"Санкт-Петербург"}}
+</script>
+
+<script>
+/* Умная кнопка звонка: на телефоне — звонилка, на ПК — форма заявки */
+(function () {
+  var isMobile = /Android|iPhone|iPad|iPod|Mobile|Opera Mini/i.test(navigator.userAgent)
+                 || window.matchMedia('(max-width: 820px)').matches;
+  document.querySelectorAll('a[href^="tel:"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      if (isMobile) return;                     // на телефоне пусть звонит
+      e.preventDefault();
+      var form = document.getElementById('form');
+      if (form) form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      var name = document.getElementById('lf-name');
+      if (name) setTimeout(function () { name.focus({ preventScroll: true }); }, 600);
+      var hint = document.getElementById('callhint');
+      if (hint) { hint.style.display = 'block'; }
+    });
+  });
+})();
 </script>
 </body>
 </html>
