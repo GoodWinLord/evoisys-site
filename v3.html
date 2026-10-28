@@ -56,5 +56,11 @@ details p{color:var(--mut);padding:0 0 15px;font-size:15px}
 <a class="p" href="tel:+79213559846">Позвонить</a>
 
 </div>
+<script>
+document.addEventListener('click',function(e){
+  var a=e.target.closest && e.target.closest('a[href^="tel:"]');
+  if(a && window.ym){ ym(113852364,'reachGoal','call_click'); }
+});
+</script>
 </body>
 </html>
