@@ -53,5 +53,11 @@ a.tel{color:var(--ink);font-weight:700;text-decoration:none}
 </section>
 </main>
 <footer><div class="wrap">Evoisys · evoisys.ru · Санкт-Петербург</div></footer>
+<script>
+document.addEventListener('click',function(e){
+  var a=e.target.closest && e.target.closest('a[href^="tel:"]');
+  if(a && window.ym){ ym(113852364,'reachGoal','call_click'); }
+});
+</script>
 </body>
 </html>
