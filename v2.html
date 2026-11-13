@@ -98,6 +98,8 @@ footer{border-top:1px solid rgba(21,60,120,.08);padding:32px 0;color:var(--mut);
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/113852364" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script>window.__t0=Date.now();</script>
 </head>
 <body>
 <header><div class="wrap nav">
@@ -167,6 +169,7 @@ footer{border-top:1px solid rgba(21,60,120,.08);padding:32px 0;color:var(--mut);
 <input required name="phone" id="lf-phone" type="tel" inputmode="tel" placeholder="Телефон" autocomplete="tel" maxlength="25">
 <textarea name="msg" id="lf-msg" rows="3" maxlength="2000" placeholder="Что нужно: вентиляция / кондиционирование / проект"></textarea>
 <input name="honey" id="lf-honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+<div class="cf-turnstile" data-sitekey="__TS_SITEKEY__" style="margin:6px 0"></div>
 <button class="btn" type="submit" id="lf-btn">Отправить заявку</button>
 <p class="note" id="ok" style="display:none;color:var(--cy);font-weight:700">Заявка принята — перезвоним в рабочее время.</p>
 <p class="note" id="err" style="display:none;color:#e04b4b;font-weight:700">Не удалось отправить. Позвоните: +7 921 355-98-46</p>
@@ -184,6 +187,7 @@ footer{border-top:1px solid rgba(21,60,120,.08);padding:32px 0;color:var(--mut);
   function hide(el) { el.style.display = 'none'; }
   f.addEventListener('submit', function (e) {
     e.preventDefault();
+    if(Date.now()-(window.__t0||0)<3000){return;}
     hide(okBox); hide(errBox);
     var name = (document.getElementById('lf-name').value || '').trim();
     var phone = (document.getElementById('lf-phone').value || '').trim();
@@ -195,7 +199,8 @@ footer{border-top:1px solid rgba(21,60,120,.08);padding:32px 0;color:var(--mut);
     var label = btn.textContent;
     btn.disabled = true; btn.textContent = 'Отправляем…';
     var body = JSON.stringify({ name: name, phone: phone, msg: msg,
-                                page: location.href, honey: honey ? honey.value : '' });
+                                page: location.href, honey: honey ? honey.value : '',
+                                ts_token: (document.querySelector('[name=cf-turnstile-response]')||{}).value || '' });
     var targets = ['https://api.evoisys.ru/api/lead', '/api/lead'];
     function send(i) {
       if (i >= targets.length) return Promise.reject(new Error('no target'));
