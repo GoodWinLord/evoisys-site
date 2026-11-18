@@ -87,7 +87,6 @@ footer{border-top:1px solid rgba(21,60,120,.08);padding:32px 0;color:var(--mut);
 }
 @media(max-width:600px){.grid3,.works,.steps{grid-template-columns:1fr}}
 </style>
-<link rel="preconnect" href="https://goodwinlord.github.io" crossorigin>
 <link rel="canonical" href="https://evoisys.ru/">
 <meta property="og:site_name" content="Evoisys">
 <meta property="og:image" content="https://evoisys.ru/assets/hero.jpg">
@@ -95,7 +94,8 @@ footer{border-top:1px solid rgba(21,60,120,.08);padding:32px 0;color:var(--mut);
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="RU-SPE">
 <meta name="geo.placename" content="Санкт-Петербург">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231565c0'/%3E%3Ctext x='32' y='44' font-size='34' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/favicon.ico" sizes="any">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"LocalBusiness","name":"Evoisys",
 "description":"Проектирование и монтаж систем вентиляции и кондиционирования в Санкт-Петербурге",
@@ -142,7 +142,7 @@ footer{border-top:1px solid rgba(21,60,120,.08);padding:32px 0;color:var(--mut);
 </div>
 </div>
 <div class="visual">
-<img src="https://goodwinlord.github.io/evoisys-site/assets/hero.jpg" onerror="this.onerror=null;this.src='assets/hero.jpg'" alt="Вентиляция кафе — реальный объект">
+<img src="/assets/hero.jpg" alt="Вентиляция кафе — реальный объект">
 
 </div>
 </section>
@@ -161,9 +161,9 @@ footer{border-top:1px solid rgba(21,60,120,.08);padding:32px 0;color:var(--mut);
 <h2>Выполненные объекты</h2>
 <p class="sub2">Реальные объекты — без чужих картинок.</p>
 <div class="works">
-<div class="work"><img src="https://goodwinlord.github.io/evoisys-site/assets/work-vrf.jpg" onerror="this.onerror=null;this.src='assets/work-vrf.jpg'" alt="VRF-система Haier — наружные блоки" loading="lazy"><span>VRF-система: наружные блоки</span></div>
-<div class="work"><img src="https://goodwinlord.github.io/evoisys-site/assets/work-cafe.jpg" onerror="this.onerror=null;this.src='assets/work-cafe.jpg'" alt="Вентиляция кафе — спиральный воздуховод в зале" loading="lazy"><span>Вентиляция кафе — зал</span></div>
-<div class="work"><img src="https://goodwinlord.github.io/evoisys-site/assets/work-ac.jpg" onerror="this.onerror=null;this.src='assets/work-ac.jpg'" alt="Кондиционер — внутренний блок" loading="lazy"><span>Кондиционер: внутренний блок</span></div>
+<div class="work"><img src="/assets/work-vrf.jpg" alt="VRF-система Haier — наружные блоки" loading="lazy"><span>VRF-система: наружные блоки</span></div>
+<div class="work"><img src="/assets/work-cafe.jpg" alt="Вентиляция кафе — спиральный воздуховод в зале" loading="lazy"><span>Вентиляция кафе — зал</span></div>
+<div class="work"><img src="/assets/work-ac.jpg" alt="Кондиционер — внутренний блок" loading="lazy"><span>Кондиционер: внутренний блок</span></div>
 </div>
 </section>
 
@@ -186,6 +186,7 @@ footer{border-top:1px solid rgba(21,60,120,.08);padding:32px 0;color:var(--mut);
 <input required name="phone" id="lf-phone" type="tel" inputmode="tel" placeholder="Телефон" autocomplete="tel" maxlength="25">
 <textarea name="msg" id="lf-msg" rows="3" maxlength="2000" placeholder="Что нужно: вентиляция / кондиционирование / проект"></textarea>
 <input name="honey" id="lf-honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+<label class="note" style="display:flex;gap:8px;align-items:flex-start"><input id="lf-consent" required type="checkbox" name="consent" style="width:auto;margin-top:4px"><span>Согласен с <a href="/privacy.html" style="color:var(--cy)">политикой конфиденциальности</a></span></label>
 <div id="ts-box" style="display:none;margin:6px 0"></div>
 <script>
 (function(){var k="__TS_SITEKEY__";if(k&&k.indexOf("__")!==0){var d=document.getElementById("ts-box");d.className="cf-turnstile";d.setAttribute("data-sitekey",k);d.style.display="";}})();
@@ -303,6 +304,10 @@ if (typeof module !== 'undefined' && module.exports) module.exports = AntiSpam;
     var name = (document.getElementById('lf-name').value || '').trim();
     var phone = (document.getElementById('lf-phone').value || '').trim();
     var msg = (document.getElementById('lf-msg').value || '').trim();
+    if (!document.getElementById('lf-consent').checked) {
+      errBox.textContent = 'Нужно согласие с политикой конфиденциальности';
+      show(errBox); return;
+    }
     if (name.length < 2 || phone.replace(/[^0-9]/g, '').length < 10) {
       errBox.textContent = 'Укажите имя и номер телефона';
       show(errBox); return;

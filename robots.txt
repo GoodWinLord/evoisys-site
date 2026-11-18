@@ -1,7 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /v1.html
-Disallow: /v2.html
-Disallow: /v3.html
 
 Sitemap: https://evoisys.ru/sitemap.xml
